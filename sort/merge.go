@@ -16,23 +16,23 @@ func Merge(items ...int) (merged []int) {
 	return
 }
 
-func merge(left []int, right []int) (merged []int) {
-	i := 0
-	j := 0
-	sizeLeft := len(left)
-	sizeRight := len(right)
+func merge(lefts []int, rights []int) (merged []int) {
+	left := 0
+	right := 0
+	sizeLeft := len(lefts)
+	sizeRight := len(rights)
 	merged = make([]int, 0, sizeLeft+sizeRight)
-	for i < sizeLeft && j < sizeRight {
-		if left[i] < right[j] {
-			merged = append(merged, left[i])
-			i++
+	for left < sizeLeft && right < sizeRight {
+		if lefts[left] < rights[right] {
+			merged = append(merged, lefts[left])
+			left++
 		} else {
-			merged = append(merged, right[j])
-			j++
+			merged = append(merged, rights[right])
+			right++
 		}
 	}
-	merged = append(merged, left[i:]...)
-	merged = append(merged, right[j:]...)
+	merged = append(merged, lefts[left:]...)
+	merged = append(merged, rights[right:]...)
 
 	return
 }
