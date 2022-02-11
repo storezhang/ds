@@ -1,16 +1,14 @@
 package collection
 
 type node struct {
-	data interface{}
 	prev *node
+	data interface{}
 	next *node
 }
 
-func newNode(data interface{}, prev *node, next *node) *node {
+func newNode(data interface{}) *node {
 	return &node{
 		data: data,
-		prev: prev,
-		next: next,
 	}
 }
 

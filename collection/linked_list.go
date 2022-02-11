@@ -1,20 +1,25 @@
 package collection
 
-var _ = (*LinkedList)(nil)
+var _ list = (*LinkedList)(nil)
 
 // LinkedList 链表
 type LinkedList struct {
-	header *node
-	tail   *node
-	size   int
+	head *node
+	tail *node
+	size int
 }
 
 // NewLinkedList 创建链表
 func NewLinkedList() *LinkedList {
+	head := newEmptyNode()
+	tail := newEmptyNode()
+	head.next = tail
+	tail.prev = head
+
 	return &LinkedList{
-		header: newEmptyNode(),
-		tail:   newEmptyNode(),
-		size:   0,
+		head: head,
+		tail: tail,
+		size: 0,
 	}
 }
 
@@ -23,8 +28,11 @@ func (ll *LinkedList) Add(data interface{}) {
 		ll.size++
 	}()
 
-	_node := newNode(data, ll.header, ll.tail)
-	ll.header.next = _node
+	_node := newNode(data)
+	tail := ll.tail
+	tail.next = _node
+	_node.prev = _node
+	ll.tail = tail
 }
 
 func (ll *LinkedList) Size() int {
