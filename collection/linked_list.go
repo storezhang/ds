@@ -1,5 +1,7 @@
 package collection
 
+var _ = (*LinkedList)(nil)
+
 // LinkedList 链表
 type LinkedList struct {
 	header *node
@@ -17,6 +19,14 @@ func NewLinkedList() *LinkedList {
 }
 
 func (ll *LinkedList) Add(data interface{}) {
+	defer func() {
+		ll.size++
+	}()
+
 	_node := newNode(data, ll.header, ll.tail)
 	ll.header.next = _node
+}
+
+func (ll *LinkedList) Size() int {
+	return ll.size
 }
