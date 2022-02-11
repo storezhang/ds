@@ -1,30 +1,30 @@
 package sort
 
-func Quick(start int, end int, items ...int) {
-	if start >= end {
+func Quick(left int, right int, items ...int) {
+	if left >= right {
 		return
 	}
 
-	_pivot := partition(start, end, items...)
-	Quick(start, _pivot-1, items...)
-	Quick(_pivot+1, end, items...)
+	_pivot := partition(left, right, items...)
+	Quick(left, _pivot-1, items...)
+	Quick(_pivot+1, right, items...)
 }
 
-func partition(low int, high int, items ...int) (pivot int) {
-	pivot = items[low]
-	for low < high {
-		for low < high && pivot <= items[high] {
-			high--
+func partition(left int, right int, items ...int) (pivot int) {
+	pivot = items[left]
+	for left < right {
+		for left < right && pivot <= items[right] {
+			right--
 		}
-		items[low] = items[high]
+		items[left] = items[right]
 
-		for low < high && pivot >= items[low] {
-			low++
+		for left < right && pivot >= items[left] {
+			left++
 		}
-		items[high] = items[low]
+		items[right] = items[left]
 	}
-	items[low] = pivot
-	pivot = low
+	items[left] = pivot
+	pivot = left
 
 	return
 }
