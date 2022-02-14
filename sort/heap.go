@@ -17,7 +17,7 @@ func (h heap) less(left int, right int) bool {
 func (h heap) up(index int) {
 	for {
 		parent := (index - 1) / 2
-		if parent == index || h.less(index, parent) {
+		if parent == index || h.less(parent, index) {
 			break
 		}
 		h.swap(index, parent)
