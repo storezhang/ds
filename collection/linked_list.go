@@ -1,6 +1,7 @@
 package collection
 
 import (
+	`fmt`
 	`sync`
 )
 
@@ -52,6 +53,20 @@ func (ll *LinkedList) Append(item interface{}) {
 		_node.next = nil
 		ll.tail = _node
 	}
+}
+
+func (ll *LinkedList) Reverse() {
+	_node := ll.head
+	var prev *node
+	var next *node
+	for nil != _node {
+		next = _node.next
+		_node.prev = next
+		_node.next = prev
+		prev = _node
+		_node = next
+	}
+	fmt.Println(ll)
 }
 
 func (ll *LinkedList) Get(index int) (item interface{}) {
