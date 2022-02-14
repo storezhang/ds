@@ -20,7 +20,7 @@ func TestMerge(t *testing.T) {
 	for _, test := range qsTests {
 		actual := sort.Merge(test.in...)
 		if !reflect.DeepEqual(actual, test.expected) {
-			t.Errorf("qs(%v) = %v；期望：%v", test.in, actual, test.expected)
+			t.Errorf("Merge(%v) = %v；期望：%v", test.in, actual, test.expected)
 		}
 	}
 }

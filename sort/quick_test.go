@@ -21,7 +21,7 @@ func TestQuick(t *testing.T) {
 		in := test.in
 		sort.Quick(0, len(test.in)-1, test.in...)
 		if !reflect.DeepEqual(test.in, test.expected) {
-			t.Errorf("qs(%v) = %v；期望：%v", in, test.in, test.expected)
+			t.Errorf(`Quick(%v) = %v；期望：%v`, in, test.in, test.expected)
 		}
 	}
 }

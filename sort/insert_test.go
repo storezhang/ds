@@ -21,7 +21,7 @@ func TestInsert(t *testing.T) {
 		in := test.in
 		sort.Insert(test.in...)
 		if !reflect.DeepEqual(test.in, test.expected) {
-			t.Errorf("qs(%v) = %v；期望：%v", in, test.in, test.expected)
+			t.Errorf(`Insert(%v) = %v；期望：%v`, in, test.in, test.expected)
 		}
 	}
 }
