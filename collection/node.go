@@ -11,7 +11,3 @@ func newNode(data interface{}) *node {
 		data: data,
 	}
 }
-
-func newEmptyNode() *node {
-	return new(node)
-}
