@@ -18,9 +18,11 @@ func NewHeap(items ...int) (heap *Heap) {
 }
 
 func (h *Heap) up(index int) {
-	for parent := h.parent(index); index > 0 && h.less(index, parent); {
+	parent := h.parent(index)
+	for index > 0 && h.less(index, parent) {
 		h.swap(index, parent)
 		index = parent
+		parent = h.parent(index)
 	}
 }
 
