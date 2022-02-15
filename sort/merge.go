@@ -9,9 +9,9 @@ func Merge(items ...int) (merged []int) {
 	}
 
 	middle := size / 2
-	left := Merge(items[:middle]...)
-	right := Merge(items[middle:]...)
-	merged = merge(left, right)
+	lefts := Merge(items[:middle]...)
+	rights := Merge(items[middle:]...)
+	merged = merge(lefts, rights)
 
 	return
 }
