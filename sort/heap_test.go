@@ -20,8 +20,12 @@ func TestHeap(t *testing.T) {
 	for _, test := range qsTests {
 		// in := test.in
 		heap := sort.NewHeap(test.in...)
-		for i := 0; i < 30; i++ {
-			fmt.Println(heap.Pop())
+		for {
+			if success, min := heap.Pop(); success {
+				fmt.Println(min)
+			} else {
+				break
+			}
 		}
 	}
 }

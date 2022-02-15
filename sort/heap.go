@@ -31,12 +31,12 @@ func (h *Heap) Add(data int) {
 	h.up(h.last())
 }
 
-func (h *Heap) Pop() (min int) {
-	min = -1
+func (h *Heap) Pop() (success bool, min int) {
 	if 0 == len(h.data) {
 		return
 	}
 
+	success = true
 	// 取出第一个元素，最小堆，一定是最小值
 	min = h.data[h.first()]
 	// 交换第一个元素和最后一个元素，因为要删除最后一个元素
